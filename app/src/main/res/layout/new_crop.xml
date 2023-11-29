@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/paddingCard">
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/labelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre cultivo" />
+
+        <EditText
+            android:id="@+id/name_new_crop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="La rivera 1"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Latitud: 5.2656" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Longitud: 75.5854" />
+
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/labelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dirección" />
+
+        <EditText
+            android:id="@+id/address_new_crop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Km 1 vía Iza"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/labelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha de siembra" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/buttonDatePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="Seleccionar fecha" />
+
+            <TextView
+                android:id="@+id/textViewSelectedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fecha seleccionada" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView7"
+            style="@style/labelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Área del terreno" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/area_new_crop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+            <Spinner
+                android:id="@+id/area_units_new_crop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/options_array" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView8"
+            style="@style/labelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo de suelo" />
+
+        <Spinner
+            android:id="@+id/floor_type_new_crop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/options_floor" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/labelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Semilla" />
+
+        <EditText
+            android:id="@+id/seed_new_crop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Certificada"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/textView9"
+            style="@style/labelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Especie" />
+
+        <EditText
+            android:id="@+id/specie_new_crop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Solanum tuberosum"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/textView10"
+            style="@style/labelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Variedad" />
+
+        <EditText
+            android:id="@+id/variety_new_crop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Criolla"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/textView11"
+            style="@style/labelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cultivo anterior" />
+
+        <EditText
+            android:id="@+id/last_crop_new_crop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Cebolla larga"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/save_new_crop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="saveCrop"
+            android:text="Guardar" />
+    </LinearLayout>
+</ScrollView>

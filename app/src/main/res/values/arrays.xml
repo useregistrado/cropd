@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="options_array">
+        <item>@string/option_ha2</item>
+        <item>@string/option_km2</item>
+        <item>@string/option_m2</item>
+        <item>@string/option_fg</item>
+    </string-array>
+
+    <string-array name="options_floor">
+        <item>@string/Arcilloso</item>
+        <item>@string/Calizo</item>
+        <item>@string/Limoso</item>
+        <item>@string/Arenoso</item>
+        <item>@string/Franco</item>
+        <item>@string/Salino</item>
+    </string-array>
+</resources>

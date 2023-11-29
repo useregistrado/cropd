@@ -1,0 +1,5 @@
+<!-- res/drawable/circular_shape.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@android:color/transparent"/> <!-- Color de fondo -->
+    <corners android:radius="100dp"/>  <!-- Radio suficientemente grande para hacerlo circular -->
+</shape>

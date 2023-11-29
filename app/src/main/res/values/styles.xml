@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="labelForm">
+        <item name="android:textSize">@dimen/subTitleForm</item>
+        <item name="android:textColor">@color/purple</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">12dp</item>
+
+    </style>
+
+    <style name="CustomButtonStyle" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@drawable/button_selector</item>
+    </style>
+
+    <style name="roundedButton" parent="Widget.Material3.Button">
+        <item name="android:shape">ring</item>
+        <item name="android:innerRadius">0dp</item>
+        <item name="android:thicknessRatio">2</item>
+        <item name="android:useLevel">false</item>
+    </style>
+
+</resources>

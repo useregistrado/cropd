@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">CropD</string>
+    <string name="last_modification">última modificación: </string>
+    <string name="creation_date">Fecha de creación: </string>
+    <string name="seedDate">Fecha de siembra: </string>
+    <string name="address">Dirección: </string>
+    <string name="samplings">Recorridos: </string>
+    <string name="observations">Hallazgos: </string>
+
+    <string name="option_ha2">Ha</string>
+    <string name="option_km2">Km2</string>
+    <string name="option_m2">m2</string>
+    <string name="option_fg">Fg</string>
+
+    <string name="Arcilloso">Arcilloso</string>
+    <string name="Calizo">Calizo</string>
+    <string name="Limoso">Limoso</string>
+    <string name="Arenoso">Arenoso</string>
+    <string name="Franco">Franco</string>
+    <string name="Salino">Salino</string>
+
+    <string name="verde_palido">Verde pálido</string>
+    <string name="amarillo">Amarillo</string>
+    <string name="morado">Morado</string>
+    <string name="negro">Negro</string>
+    <string name="blanco">Blanco</string>
+
+    <string name="marchitamiento_de_hojas">Marchitamiento de hojas</string>
+    <string name="manchas">Manchas</string>
+    <string name="defoliacion">Defoliación</string>
+    <string name="retraso_en_el_crecimiento">Retraso en el crecimiento</string>
+    <string name="podredumbre_de_raices">Podredumbre de raíces</string>
+    <string name="marchitamiento_subito">Marchitamiento súbito</string>
+    <string name="manchas_en_los_tuberculos">Manchas en los tubérculos</string>
+    <string name="moho">Moho</string>
+    <string name="amarilleo_generalizado">Amarilleo generalizado</string>
+    <string name="muerte">Muerte</string>
+
+    <string name="tizon_tardio">Tizón tardío</string>
+    <string name="tizon_temprano">Tizón temprano</string>
+    <string name="mildiu_polvoriento">Mildiú polvoriento</string>
+    <string name="rhizoctonia_solani">Rhizoctonia solani</string>
+    <string name="potato_leafroll_virus">Potato Leafroll Virus</string>
+    <string name="sclerotinia_sclerotiorum">Sclerotinia sclerotiorum</string>
+    <string name="pudricion_de_fusarium">Pudrición de Fusarium</string>
+    <string name="pudricion_negra">Pudrición negra</string>
+    <string name="pudricion_de_la_costra">Pudrición de la costra</string>
+    <string name="virus_del_mosaico">Virus del mosaico</string>
+    <string name="nematodos_de_la_papa">Nematodos de la papa</string>
+    <string name="exceso_de_agua">Exceso de agua</string>
+    <string name="falta_de_agua">Falta de agua</string>
+
+    <string name="other">Otro:</string>
+    <string name="loading">Cargando...</string>
+
+</resources>

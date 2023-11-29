@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewObservationActivity">
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/paddingCard">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/brujulat"
+                android:scaleType="fitCenter"
+                android:background="@drawable/circular_shape"
+                android:padding="0dp"
+                android:onClick="onClickStation"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/station2"
+                android:scaleType="fitCenter"
+                android:background="@drawable/circular_shape"
+                android:padding="0dp"
+                android:onClick="onClickStation"/>
+
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView12"
+            style="@style/labelForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Altura de la planta (cm)" />
+
+        <EditText
+            android:id="@+id/plant_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:hint="50" />
+
+        <TextView
+            android:id="@+id/textView15"
+            style="@style/labelForm"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:text="Color de las hojas" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <!-- Espaciador Inicial -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <!-- Primer RelativeLayout con layout_weight -->
+            <RelativeLayout
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/color_leaves_verde_palido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:accessibilityPaneTitle="@string/verde_palido"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/color_leaves_verde_palido"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/verde_palido" />
+            </RelativeLayout>
+
+            <!-- Espaciador entre RelativeLayouts -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <!-- Segundo RelativeLayout con layout_weight -->
+            <RelativeLayout
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/color_leaves_amarillo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:accessibilityPaneTitle="@string/amarillo"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/color_leaves_amarillo"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/amarillo" />
+            </RelativeLayout>
+
+            <!-- Espaciador entre RelativeLayouts -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <!-- Tercer RelativeLayout con layout_weight -->
+            <RelativeLayout
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/color_leaves_morado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:accessibilityPaneTitle="@string/morado"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/color_leaves_morado"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/morado" />
+            </RelativeLayout>
+
+            <!-- Espaciador entre RelativeLayouts -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <!-- Cuarto RelativeLayout con layout_weight -->
+            <RelativeLayout
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/color_leaves_negro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:accessibilityPaneTitle="@string/negro"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/color_leaves_negro"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/negro" />
+            </RelativeLayout>
+
+            <!-- Espaciador entre RelativeLayouts -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <!-- Quinto RelativeLayout con layout_weight -->
+            <RelativeLayout
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/color_leaves_blanco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:accessibilityPaneTitle="@string/blanco"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/color_leaves_blanco"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/blanco" />
+            </RelativeLayout>
+
+            <!-- Espaciador Final -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/other" />
+
+            <EditText
+                android:id="@+id/color_other"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView18"
+            style="@style/labelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Síntomas" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/sintoma_marchitamiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/marchitamiento_de_hojas"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sintoma_marchitamiento"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/marchitamiento_de_hojas" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/sintoma_manchas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/manchas"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sintoma_manchas"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/manchas" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/sintoma_defoliacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/defoliacion"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sintoma_defoliacion"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/defoliacion" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/sintoma_retraso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/retraso_en_el_crecimiento"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sintoma_retraso"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/retraso_en_el_crecimiento" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/sintoma_podredumbre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/podredumbre_de_raices"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sintoma_podredumbre"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/podredumbre_de_raices" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/sintoma_marchitamiento_subito"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/marchitamiento_subito"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sintoma_marchitamiento_subito"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/marchitamiento_subito" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/sintoma_manchas_tuberculos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/manchas_en_los_tuberculos"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sintoma_manchas_tuberculos"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/manchas_en_los_tuberculos" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/sintoma_moho"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/moho"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sintoma_moho"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/moho" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/sintoma_amarilleo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/amarilleo_generalizado"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sintoma_amarilleo"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/amarilleo_generalizado" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/sintoma_muerte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/muerte"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sintoma_muerte"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/muerte" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/sintoma_otro_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/other" />
+
+            <EditText
+                android:id="@+id/sintoma_otro"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView20"
+            style="@style/labelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Diagnóstico preliminar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_tizon_tardio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/tizon_tardio"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_tizon_tardio"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/tizon_tardio" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_tizon_temprano"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/tizon_temprano"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_tizon_temprano"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/tizon_temprano" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_mildu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/mildiu_polvoriento"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_mildu"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/mildiu_polvoriento" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_rhizoctonia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/rhizoctonia_solani"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_rhizoctonia"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/rhizoctonia_solani" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_sclerotina"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/sclerotinia_sclerotiorum"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_sclerotina"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/sclerotinia_sclerotiorum" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_pudricion_fusarium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/pudricion_de_fusarium"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_pudricion_fusarium"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/pudricion_de_fusarium" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_pudricion_negra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/pudricion_negra"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_pudricion_negra"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/pudricion_negra" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_pudricion_costra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/pudricion_de_la_costra"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_pudricion_costra"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/pudricion_de_la_costra" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_virus_mosaico"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/virus_del_mosaico"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_virus_mosaico"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/virus_del_mosaico" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_nematodos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/nematodos_de_la_papa"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_nematodos"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/nematodos_de_la_papa" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_exceso_agua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/exceso_de_agua"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_exceso_agua"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/exceso_de_agua" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_falta_agua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/falta_de_agua"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_falta_agua"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/falta_de_agua" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_potato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/potato_leafroll_virus"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_potato"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/potato_leafroll_virus" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/diagnostico_insuficiencia_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Insufiencia de: " />
+
+            <EditText
+                android:id="@+id/diagnostico_insuficiencia"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/diagnostico_otro_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/other" />
+
+            <EditText
+                android:id="@+id/diagnostico_otro"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textView19"
+            style="@style/labelForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Muestra_label" />
+
+        <EditText
+            android:id="@+id/muestra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="12-10-1"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/textView21"
+            style="@style/labelForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Observaciones" />
+
+        <EditText
+            android:id="@+id/observations"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/save_observation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="newObservations"
+            android:text="GUARDAR" />
+
+    </LinearLayout>
+</ScrollView>
+
