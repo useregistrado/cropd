@@ -20,13 +20,27 @@ class Crop(): RealmObject {
     var seedtime: String = ""
     var landArea: Double = 0.0
     var areaUnits: String = ""
+    var analysisSoil: String = ""
     var floorType: String = ""
+    var topographyFloor: String = ""
+    var distanceForrows: String = ""
+    var distancePlants: String = ""
     var species: String = ""
     var variety: String = ""
     var seed: String = ""
     var previusCrop: String = ""
     var lastModification: String = ""
     var creationDate: String = ""
+
+    var electricConductivity: String = ""
+    var ph: String = ""
+    var calcium: String = ""
+    var nitrogen: String = ""
+    var phosphorus: String = ""
+    var potassium: String = ""
+    var sodium: String = ""
+    var satAluminum: String = ""
+
     var samplings: RealmList<com.cropd.cropd.db.Sampling>? = realmListOf()
 
 
@@ -37,6 +51,8 @@ class Crop(): RealmObject {
 class Sampling(): RealmObject {
     @PrimaryKey
     var _id: ObjectId = ObjectId()
+    var cropAge: String = ""
+    var observationCrop: String = ""
     var lastModification: String = ""
     var creationDate: String = ""
     var observations: RealmList<Observation>? = realmListOf()
@@ -53,8 +69,20 @@ class Observation(): RealmObject {
     var otherColorLeaf: String = ""
     var symptoms: RealmList<String> = realmListOf()
     var otherSymptoms: String = ""
-    var preliminaryDiagnosis: RealmList<String> = realmListOf()
+
+    var preliminaryDiagnosisFungus: RealmList<String> = realmListOf()
+    var preliminaryDiagnosisBacteria: RealmList<String> = realmListOf()
+    var preliminaryDiagnosisVirus: RealmList<String> = realmListOf()
+    var preliminaryDiagnosisPests: RealmList<String> = realmListOf()
+    var preliminaryDiagnosisAbiotic: RealmList<String> = realmListOf()
+    var captures: RealmList<String> = realmListOf()
+
     var otherDiagnosis: String = ""
+
+    var incidence: String = ""
+    var severity: String = ""
+    var insectPopulation: String = ""
+
     var sample: String = ""
     var observations: String = ""
     var creationDate: String = ""

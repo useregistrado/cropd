@@ -4,7 +4,23 @@
         <item name="android:textSize">@dimen/subTitleForm</item>
         <item name="android:textColor">@color/purple</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">14dp</item>
+
+    </style>
+
+    <style name="labelFormResponse">
+        <item name="android:textSize">@dimen/subTitleForm</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:layout_marginTop">14dp</item>
+
+    </style>
+
+    <style name="subLabelForm">
+        <item name="android:textSize">@dimen/subTitleForm2</item>
+        <item name="android:textColor">@color/purple</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
 
     </style>
 

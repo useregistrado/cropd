@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import java.io.IOException
+import java.lang.IllegalStateException
 
 class BluetoothManager(private val context: Context) {
 
@@ -22,6 +23,10 @@ class BluetoothManager(private val context: Context) {
     private lateinit var bluetoothSocket: BluetoothSocket
     private var progressDialog: ProgressDialog
     private var permissionMng: PermissionManager
+    private var readingThread: Thread? = null
+
+    @Volatile
+    private var isReading: Boolean = false
 
     init {
         progressDialog = ProgressDialog(context)
@@ -61,48 +66,55 @@ class BluetoothManager(private val context: Context) {
                     bluetoothSocket.connect()
                 }
                 if(bluetoothSocket.isConnected){
-                    Toast.makeText(context, "Bluetooth conectado", Toast.LENGTH_SHORT).show()
+                    println("conectado")
+                    //Toast.makeText(context, "Bluetooth conectado", Toast.LENGTH_SHORT).show()
                 }
 
             } catch (e: Exception) {
+                println(e)
                 bluetoothSocket.close()
                 progressDialog.dismiss()
-                Toast.makeText(context, "$e", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(context, "$e", Toast.LENGTH_SHORT).show()
             }
 
         } catch (e: IOException) {
+            println(e)
             bluetoothSocket.close()
             progressDialog.dismiss()
-            Toast.makeText(context, "$e", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(context, "$e", Toast.LENGTH_SHORT).show()
         }
 
     }
 
     fun readBluetoothData(onDataReceived: (String) -> Unit) {
-        val inputStream = bluetoothSocket.inputStream
-        val sensorBuffer = ByteArray(1024)
-        var sensorDataBuffer = StringBuilder()
 
-        Thread {
-            while (true) {
+        if (readingThread?.isAlive == true) {
+            return
+        }
+
+        val inputStream = bluetoothSocket.inputStream
+        val sensorBuffer = ByteArray(2048)
+        var sensorDataBuffer = StringBuilder()
+        isReading = true
+
+        readingThread = Thread {
+            while (isReading) {
                 try {
                     val sensorBytes = inputStream.read(sensorBuffer)
                     if (sensorBytes > 0) {
                         val sensorReceiveData = String(sensorBuffer, 0, sensorBytes)
                         sensorDataBuffer.append(sensorReceiveData)
 
-                        // Verificar si se ha recibido un fragmento completo (por ejemplo, el delimitador \n)
-                        val delimiter = "\n"
-                        val data = sensorDataBuffer.toString()
-                        if (data.contains(delimiter)) {
-                            val parts = data.split(delimiter)
-                            val completeData = parts[0]  // Tomar el primer fragmento completo
+                        val delimiter = "<"
+                        var delimiterIndex: Int
 
-                            // Enviar los datos al callback
+                        // Procesar todos los mensajes completos
+                        while (sensorDataBuffer.indexOf(delimiter).also { delimiterIndex = it } != -1) {
+                            val completeData = sensorDataBuffer.substring(0, delimiterIndex)
                             onDataReceived(completeData)
 
-                            // Eliminar el fragmento completo del buffer
-                            sensorDataBuffer = StringBuilder(data.substring(completeData.length + delimiter.length))
+                            // Limpiar el buffer hasta el delimitador
+                            sensorDataBuffer.delete(0, delimiterIndex + delimiter.length)
                         }
                     }
                 } catch (e: IOException) {
@@ -110,25 +122,62 @@ class BluetoothManager(private val context: Context) {
                     break
                 }
             }
-        }.start()
+        }
+
+        readingThread?.start()
     }
+
+
+
 
     fun sendData(): Boolean {
         val data = "a"
-
-        if (bluetoothSocket != null && bluetoothSocket.isConnected) {
-            Thread {
-                try {
-                    BluetoothDataStream(bluetoothSocket).sendData(data)
-                } catch (e: IOException) {
-                    // Manejar el error, por ejemplo, reconectar o informar al usuario
-                }
-            }.start()
-            return true
-        } else {
+        println("111")
+        try {
+            if (bluetoothSocket != null && bluetoothSocket.isConnected) {
+                Thread {
+                    try {
+                        BluetoothDataStream(bluetoothSocket).sendData(data)
+                    } catch (e: IOException) {
+                    }
+                }.start()
+                return true
+            } else {
+                println("elseeeee")
+                return false
+            }
+        } catch (e: Exception) {
             return false
         }
 
     }
 
+    fun closeBluetoothConnection() {
+        try {
+            bluetoothSocket?.close()
+        } catch (e: IOException) {
+            println("NO SE PUDO CERRAR EL SOCKET")
+        }
+    }
+
+    fun stopReading() {
+        isReading = false
+    }
+    fun stopStream() {
+        bluetoothSocket?.inputStream?.close()
+        bluetoothSocket?.outputStream?.close()
+    }
+
+    fun startReading() {
+        isReading = true
+    }
+
+    fun isConnected(): Boolean {
+        try {
+            return bluetoothSocket.isConnected
+        } catch (e: RuntimeException) {
+            return false
+        }
+
+    }
 }

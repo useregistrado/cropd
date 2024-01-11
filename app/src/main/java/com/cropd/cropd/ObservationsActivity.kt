@@ -1,6 +1,8 @@
 package com.cropd.cropd
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -12,6 +14,7 @@ import com.cropd.cropd.db.DBHelper
 import com.cropd.cropd.db.Observation
 import io.realm.kotlin.types.RealmList
 import org.mongodb.kbson.ObjectId
+import java.io.IOException
 
 class ObservationsActivity : AppCompatActivity() {
     var id: String = ""
@@ -24,17 +27,7 @@ class ObservationsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_observations)
-
-        if (savedInstanceState == null) {
-            val extras = intent.extras
-            if (extras == null) {
-                id = ""
-            } else {
-                id = extras.getString("ID").toString()
-            }
-        } else {
-            id = savedInstanceState.getSerializable("ID").toString()
-        }
+         id = getSampling()
 
         loadSettings()
         loadData()
@@ -42,6 +35,7 @@ class ObservationsActivity : AppCompatActivity() {
 
     fun loadData() {
         val db = DBHelper()
+
         val sampling = db.selectOneSampling(ObjectId(id))
         idTextView.text = id
 
@@ -50,7 +44,6 @@ class ObservationsActivity : AppCompatActivity() {
             lastModificationDate.text = " " + sampling.lastModification
             countObservations.text = " " + sampling.observations?.size.toString()
             loadObservations(sampling.observations)
-
         }
     }
 
@@ -63,9 +56,11 @@ class ObservationsActivity : AppCompatActivity() {
     }
 
     fun newObservation(view: View) {
-        intent = Intent(this, NewObservationActivity::class.java)
+        val intent = Intent(this, NewObservationActivity::class.java)
         intent.putExtra("ID", id)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
+        finish()
     }
 
     fun loadObservations(observations: RealmList<Observation>?) {
@@ -73,7 +68,24 @@ class ObservationsActivity : AppCompatActivity() {
             return
         }
         recyclerObservations.layoutManager = LinearLayoutManager(this)
-        val adapter = ObservationsAdapter(observations)
+        val adapter = ObservationsAdapter(observations, this)
         recyclerObservations.adapter = adapter
+    }
+
+    fun gettSharedPreferences(): SharedPreferences {
+        val sharedPreferences = getSharedPreferences("bread", Context.MODE_PRIVATE)
+        return sharedPreferences
+    }
+
+    fun getSampling(): String {
+        val sharedPreferences = gettSharedPreferences()
+        return sharedPreferences.getString("sampling", "") ?: ""
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val intent = Intent(this, SamplingsActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
+        return true
     }
 }

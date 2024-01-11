@@ -1,7 +1,9 @@
 package com.cropd.cropd
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.View
@@ -26,11 +28,23 @@ class NewCropActivity : AppCompatActivity() {
     lateinit var date: TextView
     lateinit var area: EditText
     lateinit var areaUnits: Spinner
+    lateinit var analysisSoil: Spinner
     lateinit var floorType: Spinner
+    lateinit var topographyFloor: Spinner
+    lateinit var distanceForrows: EditText
+    lateinit var distancePlants: EditText
     lateinit var seed: EditText
     lateinit var specie: EditText
     lateinit var variety: EditText
     lateinit var lastCrop: EditText
+    lateinit var electricConductivity: EditText
+    lateinit var ph: EditText
+    lateinit var calcium: EditText
+    lateinit var nitrogen: EditText
+    lateinit var phosphorus: EditText
+    lateinit var potassium: EditText
+    lateinit var sodium: EditText
+    lateinit var satAluminum: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,11 +88,23 @@ class NewCropActivity : AppCompatActivity() {
             date.text.toString(),
             area.text.toString().toDouble(),
             areaUnits.selectedItem.toString(),
+            analysisSoil.selectedItem.toString(),
             floorType.selectedItem.toString(),
+            topographyFloor.selectedItem.toString(),
+            distanceForrows.text.toString(),
+            distancePlants.text.toString(),
             specie.text.toString(),
             variety.text.toString(),
             seed.text.toString(),
             lastCrop.text.toString(),
+            electricConductivity.text.toString(),
+            ph.text.toString(),
+            calcium.text.toString(),
+            nitrogen.text.toString(),
+            phosphorus.text.toString(),
+            potassium.text.toString(),
+            sodium.text.toString(),
+            satAluminum.text.toString(),
             currentDate,
             currentDate
         )
@@ -88,7 +114,7 @@ class NewCropActivity : AppCompatActivity() {
             val idCrop = db.insertCrop(newCrop)
             Toast.makeText(this, "Guardado", Toast.LENGTH_LONG).show()
             intent = Intent(this, SamplingsActivity::class.java)
-            intent.putExtra("ID", idCrop)
+            setCrop(idCrop)
             startActivity(intent)
         } catch (e : Exception) {
             Toast.makeText(this, "Error al crear el cultivo", Toast.LENGTH_LONG).show()
@@ -103,15 +129,39 @@ class NewCropActivity : AppCompatActivity() {
         date = findViewById(R.id.textViewSelectedDate)
         area = findViewById(R.id.area_new_crop)
         areaUnits = findViewById(R.id.area_units_new_crop)
+        analysisSoil = findViewById(R.id.yes_no_ns_nr)
         floorType = findViewById(R.id.floor_type_new_crop)
+        topographyFloor = findViewById(R.id.floor_topography_new_crop)
+        distanceForrows = findViewById(R.id.distance_new_crop)
+        distancePlants = findViewById(R.id.distance_plants_new_crop)
         specie = findViewById(R.id.specie_new_crop)
         variety = findViewById(R.id.variety_new_crop)
         lastCrop = findViewById(R.id.last_crop_new_crop)
         seed = findViewById(R.id.seed_new_crop)
+        electricConductivity = findViewById(R.id.conductivity_new_crop)
+        ph = findViewById(R.id.ph_new_crop)
+        calcium = findViewById(R.id.calcium_new_crop)
+        nitrogen = findViewById(R.id.nitrogen_new_crop)
+        phosphorus = findViewById(R.id.phosphorous_new_crop)
+        potassium = findViewById(R.id.potassium_new_crop)
+        sodium = findViewById(R.id.sodium_new_crop)
+        satAluminum = findViewById(R.id.sat_aluminum_new_crop)
     }
 
     fun getDate(): String {
         val formato = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         return formato.format(Date())
+    }
+
+    fun gettSharedPreferences(): SharedPreferences {
+        val sharedPreferences = getSharedPreferences("bread", Context.MODE_PRIVATE)
+        return sharedPreferences
+    }
+
+    fun setCrop(cropId : String) {
+        val sharedPreferences = gettSharedPreferences()
+        val editor = sharedPreferences.edit()
+        editor.putString("crop", cropId)
+        editor.apply()
     }
 }

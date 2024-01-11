@@ -1,6 +1,7 @@
 package com.cropd.cropd.adapters
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,7 @@ import com.cropd.cropd.SamplingsActivity
 import com.cropd.cropd.db.Crop
 import io.realm.kotlin.query.RealmResults
 
-class CropsAdapter(val crops: RealmResults<Crop>) : RecyclerView.Adapter<CropsAdapter.CropViewHolder>(){
+class CropsAdapter(val crops: RealmResults<Crop>, val sharedPreferences: SharedPreferences) : RecyclerView.Adapter<CropsAdapter.CropViewHolder>(){
     class CropViewHolder(itemView: View, val adapter: CropsAdapter) : RecyclerView.ViewHolder(itemView)  {
         var viewTitle: TextView
         var viewLastModified: TextView
@@ -24,11 +25,12 @@ class CropsAdapter(val crops: RealmResults<Crop>) : RecyclerView.Adapter<CropsAd
 
             itemView.setOnClickListener(View.OnClickListener {
                 val intent = Intent(itemView.context, SamplingsActivity::class.java)
-                itemView.context.startActivity(intent)
                 val id = adapter.crops.get(adapterPosition)._id.toHexString()
-                println("%&/&%$%&$#$%&//#")
-                println(id)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 intent.putExtra("ID", id)
+
+                adapter.setCrop(id)
+
                 itemView.context.startActivity(intent)
             })
         }
@@ -48,5 +50,11 @@ class CropsAdapter(val crops: RealmResults<Crop>) : RecyclerView.Adapter<CropsAd
         holder.viewTitle.text = crops[position].name
         holder.viewLastModified.text = crops[position].lastModification
         holder.viewCreationDate.text = crops[position].creationDate
+    }
+
+    fun setCrop(cropId : String) {
+        val editor = sharedPreferences.edit()
+        editor.putString("crop", cropId)
+        editor.apply()
     }
 }

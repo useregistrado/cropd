@@ -113,16 +113,16 @@
     </LinearLayout>
 
     <Button
-        android:background="@drawable/button_rounded_background"
         android:id="@+id/addObservations"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_height="60dp"
+        android:layout_width="70dp"
+        android:layout_height="77.5dp"
         android:layout_margin="16dp"
-        android:layout_width="60dp"
         android:onClick="newObservation"
         android:text="+"
         android:textSize="20dp"
+        style="@style/roundedButton"
         android:textStyle="bold" />
 
 </RelativeLayout>

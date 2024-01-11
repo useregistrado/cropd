@@ -7,12 +7,35 @@
         <item>@string/option_fg</item>
     </string-array>
 
+    <string-array name="crops_age">
+        <item>@string/option_germinacion</item>
+        <item>@string/option_crecimiento</item>
+        <item>@string/option_floracion</item>
+        <item>@string/option_maduracion</item>
+    </string-array>
+
     <string-array name="options_floor">
-        <item>@string/Arcilloso</item>
-        <item>@string/Calizo</item>
-        <item>@string/Limoso</item>
-        <item>@string/Arenoso</item>
-        <item>@string/Franco</item>
-        <item>@string/Salino</item>
+        <item>@string/arcillosa</item>
+        <item>@string/arcillo_arenosa</item>
+        <item>@string/arcillo_limosa</item>
+        <item>@string/arenoso</item>
+        <item>@string/areno_francosa</item>
+        <item>@string/franca</item>
+        <item>@string/franco_arcillo_arenosa</item>
+        <item>@string/franco_arcillo_limosa</item>
+        <item>@string/limosa</item>
+    </string-array>
+
+    <string-array name="yes_no">
+        <item>@string/yes</item>
+        <item>@string/no</item>
+        <item>@string/ns_nr</item>
+    </string-array>
+
+    <string-array name="topography_options">
+        <item>@string/concavo</item>
+        <item>@string/convexa</item>
+        <item>@string/Pendiente</item>
+        <item>@string/Plano</item>
     </string-array>
 </resources>

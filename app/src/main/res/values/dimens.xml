@@ -3,5 +3,6 @@
     <dimen name="titleCard">22dp</dimen>
     <dimen name="subTitleCard">16dp</dimen>
     <dimen name="paddingCard">14dp</dimen>
-    <dimen name="subTitleForm">14dp</dimen>
+    <dimen name="subTitleForm">17dp</dimen>
+    <dimen name="subTitleForm2">14dp</dimen>
 </resources>

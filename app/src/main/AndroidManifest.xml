@@ -9,7 +9,15 @@
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
@@ -25,12 +33,33 @@
         android:theme="@style/Theme.CropD"
         tools:targetApi="31">
         <activity
+            android:name=".NewSamplingActivity"
+            android:exported="false"
+            android:label="Nuevo recorrido"
+            android:theme="@style/Theme.CropD" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.cropd.cropd"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
             android:name=".NewObservationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Nueva Observación">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ObservationsActivity" />
+        </activity>
         <activity
             android:name=".ObservationsActivity"
             android:exported="false"
-            android:label="Hallazgos"
+            android:label="Observaciones"
             android:parentActivityName=".SamplingsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -45,16 +74,26 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="Cultivos">
+            android:label="@string/cultivos" />
+
+        <activity-alias
+            android:name=".LauncherActivity"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity-alias>
+
         <activity
             android:name=".NewCropActivity"
             android:exported="true"

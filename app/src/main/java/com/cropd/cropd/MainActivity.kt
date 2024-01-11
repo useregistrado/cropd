@@ -1,23 +1,25 @@
 package com.cropd.cropd
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cropd.cropd.adapters.CropsAdapter
-import com.cropd.cropd.bluetoothmng.BluetoothHandler
 import com.cropd.cropd.bluetoothmng.BluetoothManager
 import com.cropd.cropd.bluetoothmng.PermissionManager
 import com.cropd.cropd.db.DBHelper
 import java.io.File
+import java.util.Date
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,7 +29,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var db: DBHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         db = DBHelper()
         db.initDatabase()
 
@@ -36,17 +37,11 @@ class MainActivity : AppCompatActivity() {
 
         recyclerCrops = findViewById(R.id.cropsList)
         recyclerCrops.layoutManager = LinearLayoutManager(this)
-        val adapter = CropsAdapter(db.selectAllCrops())
-        recyclerCrops.adapter = adapter
-
 
         permissionMng = PermissionManager(this)
         bluetoothMng = BluetoothManager(this)
 
         permissionMng.requestPermissions()
-
-
-        BluetoothManagerSingleton.initialize(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -58,17 +53,15 @@ class MainActivity : AppCompatActivity() {
     fun newCrop(view: View) {
 
         intent = Intent(this, NewCropActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-    }
-
-    fun getData(view: View) {
-        BluetoothManagerSingleton.sendData("a")
     }
 
     fun exportData(view: View?) {
         var jsonString = db.getDataString()
         // Creación del archivo
-        val fileName = "datos.json"
+        val timeStamp: String = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.getDefault()).format(Date())
+        val fileName = timeStamp + ".json"
         val file = File(this.getExternalFilesDir(null), fileName)
         if (jsonString != null) {
             file.writeText(jsonString)
@@ -76,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 
         val fileUri: Uri = FileProvider.getUriForFile(
             this,
-            "com.cropd.cropd.fileprovider",
+            "com.cropd.cropd",
             file
         )
 
@@ -88,8 +81,16 @@ class MainActivity : AppCompatActivity() {
         }
         startActivity(Intent.createChooser(shareIntent, "Compartir Archivo"))
 
+    }
 
-        startActivity(Intent.createChooser(shareIntent, "Compartir Archivo"))
+    fun gettSharedPreferences(): SharedPreferences {
+        val sharedPreferences = getSharedPreferences("bread", Context.MODE_PRIVATE)
+        return sharedPreferences
+    }
 
+    override fun onResume() {
+        super.onResume()
+        val adapter = CropsAdapter(db.selectAllCrops(), gettSharedPreferences())
+        recyclerCrops.adapter = adapter
     }
 }

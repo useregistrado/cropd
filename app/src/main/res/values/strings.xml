@@ -1,29 +1,41 @@
 <resources>
     <string name="app_name">CropD</string>
+    <string name="cultivos">Cultivos</string>
     <string name="last_modification">última modificación: </string>
     <string name="creation_date">Fecha de creación: </string>
     <string name="seedDate">Fecha de siembra: </string>
     <string name="address">Dirección: </string>
     <string name="samplings">Recorridos: </string>
-    <string name="observations">Hallazgos: </string>
+    <string name="observations">Observaciones: </string>
 
     <string name="option_ha2">Ha</string>
     <string name="option_km2">Km2</string>
     <string name="option_m2">m2</string>
     <string name="option_fg">Fg</string>
 
-    <string name="Arcilloso">Arcilloso</string>
-    <string name="Calizo">Calizo</string>
-    <string name="Limoso">Limoso</string>
-    <string name="Arenoso">Arenoso</string>
-    <string name="Franco">Franco</string>
-    <string name="Salino">Salino</string>
+    <string name="option_germinacion">Germinación</string>
+    <string name="option_crecimiento">Crecimiento</string>
+    <string name="option_floracion">Floracion</string>
+    <string name="option_maduracion">Maduración</string>
+
+    <string name="arcillosa">Arcillosa</string>
+    <string name="arcillo_arenosa">Arcillo arenosa</string>
+    <string name="arcillo_limosa">Arcillo limosa</string>
+    <string name="arenoso">Arenosa</string>
+    <string name="areno_francosa">Areno francosa</string>
+    <string name="franca">Franca</string>
+    <string name="franco_arcillosa">Franco arcillosa</string>
+    <string name="franco_arenosa">Franco arenosa</string>
+    <string name="franco_limosa">Franco limosa</string>
+    <string name="franco_arcillo_arenosa">Franco arcillo arenosa</string>
+    <string name="franco_arcillo_limosa">Franco arcillo limosa</string>
+    <string name="limosa">Limosa</string>
 
     <string name="verde_palido">Verde pálido</string>
     <string name="amarillo">Amarillo</string>
-    <string name="morado">Morado</string>
+    <string name="marron">Marrón</string>
     <string name="negro">Negro</string>
-    <string name="blanco">Blanco</string>
+    <string name="verde_natural">Verde natural</string>
 
     <string name="marchitamiento_de_hojas">Marchitamiento de hojas</string>
     <string name="manchas">Manchas</string>
@@ -35,22 +47,44 @@
     <string name="moho">Moho</string>
     <string name="amarilleo_generalizado">Amarilleo generalizado</string>
     <string name="muerte">Muerte</string>
+    <string name="perforacion_foliar">Perforación foliar</string>
+    <string name="minado_de_hojas">Minado de hojas</string>
 
     <string name="tizon_tardio">Tizón tardío</string>
-    <string name="tizon_temprano">Tizón temprano</string>
+    <string name="tizon_temprano">Alternaria solani</string>
     <string name="mildiu_polvoriento">Mildiú polvoriento</string>
     <string name="rhizoctonia_solani">Rhizoctonia solani</string>
     <string name="potato_leafroll_virus">Potato Leafroll Virus</string>
     <string name="sclerotinia_sclerotiorum">Sclerotinia sclerotiorum</string>
     <string name="pudricion_de_fusarium">Pudrición de Fusarium</string>
-    <string name="pudricion_negra">Pudrición negra</string>
+    <string name="pudricion_negra">Pectobacterium atrosepticum</string>
     <string name="pudricion_de_la_costra">Pudrición de la costra</string>
     <string name="virus_del_mosaico">Virus del mosaico</string>
     <string name="nematodos_de_la_papa">Nematodos de la papa</string>
+    <string name="punta_morada">Punta morada</string>
+    <string name="gusano_blanco">Gusano blanco</string>
+    <string name="polilla_guatemalteca">Polilla guatemalteca</string>
     <string name="exceso_de_agua">Exceso de agua</string>
     <string name="falta_de_agua">Falta de agua</string>
+    <string name="depredacion">Depredación</string>
+
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="ns_nr">NS/NR</string>
 
     <string name="other">Otro:</string>
+    <string name="other_diagnosys">Otro diagnóstico:</string>
+    <string name="incidence">Incidencia</string>
+    <string name="severity">Severidad</string>
+    <string name="all_data">Falta: </string>
+    <string name="insect_population">Población de insectos</string>
+
+
     <string name="loading">Cargando...</string>
 
+    <string name="concavo">Concava</string>
+    <string name="convexa">Convexa</string>
+    <string name="Pendiente">Pendiente</string>
+    <string name="Plano">Plana</string>
+    <string name="title_activity_new_sampling">NewSampling</string>
 </resources>

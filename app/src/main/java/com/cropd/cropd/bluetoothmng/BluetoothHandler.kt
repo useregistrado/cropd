@@ -10,6 +10,7 @@ import java.io.IOException
 import java.util.UUID
 
 @SuppressLint("MissingPermission")
+
 class BluetoothHandler(
     private val bluetoothAdapter: BluetoothAdapter,
     private val macAddress: String

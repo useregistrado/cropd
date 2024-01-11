@@ -19,6 +19,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/reconnect"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/recargar2"
+                android:scaleType="fitCenter"
+                android:background="@drawable/circular_shape"
+                android:padding="0dp"
+                android:onClick="loadBluetooth"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
             <ImageButton
                 android:id="@+id/imageButton2"
                 android:layout_width="50dp"
@@ -27,7 +43,7 @@
                 android:scaleType="fitCenter"
                 android:background="@drawable/circular_shape"
                 android:padding="0dp"
-                android:onClick="onClickStation"/>
+                android:onClick="dispatchTakePictureIntent"/>
 
             <View
                 android:layout_width="0dp"
@@ -44,11 +60,15 @@
                 android:padding="0dp"
                 android:onClick="onClickStation"/>
 
-
-
-
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/textView121"
+            style="@style/labelForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Coordenadas de la observación" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,18 +76,18 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/observation_latitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="Latitud" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/observation_longitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="Longitud" />
         </LinearLayout>
 
         <TextView
@@ -101,7 +121,6 @@
             android:orientation="horizontal"
             android:gravity="center">
 
-            <!-- Espaciador Inicial -->
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -174,7 +193,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:accessibilityPaneTitle="@string/morado"
+                    android:accessibilityPaneTitle="@string/marron"
                     android:onClick="onClickCheck" />
 
                 <TextView
@@ -182,7 +201,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/color_leaves_morado"
                     android:layout_centerHorizontal="true"
-                    android:text="@string/morado" />
+                    android:text="@string/marron" />
             </RelativeLayout>
 
             <!-- Espaciador entre RelativeLayouts -->
@@ -230,7 +249,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:accessibilityPaneTitle="@string/blanco"
+                    android:accessibilityPaneTitle="@string/verde_natural"
                     android:onClick="onClickCheck" />
 
                 <TextView
@@ -238,7 +257,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/color_leaves_blanco"
                     android:layout_centerHorizontal="true"
-                    android:text="@string/blanco" />
+                    android:text="@string/verde_natural" />
             </RelativeLayout>
 
             <!-- Espaciador Final -->
@@ -278,10 +297,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
@@ -301,8 +326,13 @@
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
@@ -322,8 +352,13 @@
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
@@ -343,16 +378,26 @@
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
@@ -372,8 +417,13 @@
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
@@ -393,16 +443,13 @@
 
             </RelativeLayout>
 
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
@@ -422,35 +469,27 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
-                <CheckBox
-                    android:id="@+id/sintoma_manchas_tuberculos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:accessibilityPaneTitle="@string/manchas_en_los_tuberculos"
-                    android:onClick="onClickCheck" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/sintoma_manchas_tuberculos"
-                    android:layout_centerHorizontal="true"
-                    android:text="@string/manchas_en_los_tuberculos" />
-
-            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
@@ -470,8 +509,38 @@
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/sintoma_manchas_tuberculos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/manchas_en_los_tuberculos"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sintoma_manchas_tuberculos"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/manchas_en_los_tuberculos" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <RelativeLayout
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
@@ -490,6 +559,25 @@
                     android:text="@string/amarilleo_generalizado" />
 
             </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -511,6 +599,63 @@
                     android:text="@string/muerte" />
 
             </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/sintoma_perforacion_foliar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/perforacion_foliar"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sintoma_perforacion_foliar"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/perforacion_foliar" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/sintoma_minado_de_hojas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/minado_de_hojas"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sintoma_minado_de_hojas"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/minado_de_hojas" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
 
         </LinearLayout>
@@ -543,17 +688,30 @@
             android:layout_height="wrap_content"
             android:text="Diagnóstico preliminar" />
 
+        <TextView
+            android:id="@+id/subtextView20"
+            style="@style/subLabelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hongos" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
-                    android:id="@+id/diagnostico_tizon_tardio"
+                    android:id="@+id/diagnostico_fungus_tizon_tardio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -563,18 +721,23 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/diagnostico_tizon_tardio"
+                    android:layout_below="@id/diagnostico_fungus_tizon_tardio"
                     android:layout_centerHorizontal="true"
                     android:text="@string/tizon_tardio" />
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
-                    android:id="@+id/diagnostico_tizon_temprano"
+                    android:id="@+id/diagnostico_fungus_tizon_temprano"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -584,18 +747,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/diagnostico_tizon_temprano"
+                    android:layout_below="@id/diagnostico_fungus_tizon_temprano"
                     android:layout_centerHorizontal="true"
                     android:text="@string/tizon_temprano" />
 
             </RelativeLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
-                    android:id="@+id/diagnostico_mildu"
+                    android:id="@+id/diagnostico_fungus_mildu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -605,11 +772,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/diagnostico_mildu"
+                    android:layout_below="@id/diagnostico_fungus_mildu"
                     android:layout_centerHorizontal="true"
                     android:text="@string/mildiu_polvoriento" />
 
             </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
 
         </LinearLayout>
@@ -617,14 +789,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
-                    android:id="@+id/diagnostico_rhizoctonia"
+                    android:id="@+id/diagnostico_fungus_rhizoctonia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -634,18 +812,23 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/diagnostico_rhizoctonia"
+                    android:layout_below="@id/diagnostico_fungus_rhizoctonia"
                     android:layout_centerHorizontal="true"
                     android:text="@string/rhizoctonia_solani" />
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
-                    android:id="@+id/diagnostico_sclerotina"
+                    android:id="@+id/diagnostico_fungus_sclerotina"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -655,26 +838,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/diagnostico_sclerotina"
+                    android:layout_below="@id/diagnostico_fungus_sclerotina"
                     android:layout_centerHorizontal="true"
                     android:text="@string/sclerotinia_sclerotiorum" />
 
             </RelativeLayout>
 
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
-                    android:id="@+id/diagnostico_pudricion_fusarium"
+                    android:id="@+id/diagnostico_fungus_pudricion_fusarium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -684,18 +863,44 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/diagnostico_pudricion_fusarium"
+                    android:layout_below="@id/diagnostico_fungus_pudricion_fusarium"
                     android:layout_centerHorizontal="true"
                     android:text="@string/pudricion_de_fusarium" />
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/subtextView21"
+            style="@style/subLabelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bacterias" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
-                    android:id="@+id/diagnostico_pudricion_negra"
+                    android:id="@+id/diagnostico_bacteria_pudricion_negra"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -705,18 +910,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/diagnostico_pudricion_negra"
+                    android:layout_below="@id/diagnostico_bacteria_pudricion_negra"
                     android:layout_centerHorizontal="true"
                     android:text="@string/pudricion_negra" />
 
             </RelativeLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
-                    android:id="@+id/diagnostico_pudricion_costra"
+                    android:id="@+id/diagnostico_bacteria_pudricion_costra"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -726,22 +935,39 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/diagnostico_pudricion_costra"
+                    android:layout_below="@id/diagnostico_bacteria_pudricion_costra"
                     android:layout_centerHorizontal="true"
                     android:text="@string/pudricion_de_la_costra" />
 
             </RelativeLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/subtextView22"
+            style="@style/subLabelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Virus" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
 
                 <CheckBox
@@ -761,83 +987,17 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <CheckBox
-                    android:id="@+id/diagnostico_nematodos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:accessibilityPaneTitle="@string/nematodos_de_la_papa"
-                    android:onClick="onClickCheck" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/diagnostico_nematodos"
-                    android:layout_centerHorizontal="true"
-                    android:text="@string/nematodos_de_la_papa" />
-
-            </RelativeLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <CheckBox
-                    android:id="@+id/diagnostico_exceso_agua"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:accessibilityPaneTitle="@string/exceso_de_agua"
-                    android:onClick="onClickCheck" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/diagnostico_exceso_agua"
-                    android:layout_centerHorizontal="true"
-                    android:text="@string/exceso_de_agua" />
-
-            </RelativeLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <CheckBox
-                    android:id="@+id/diagnostico_falta_agua"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:accessibilityPaneTitle="@string/falta_de_agua"
-                    android:onClick="onClickCheck" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/diagnostico_falta_agua"
-                    android:layout_centerHorizontal="true"
-                    android:text="@string/falta_de_agua" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <CheckBox
-                    android:id="@+id/diagnostico_potato"
+                    android:id="@+id/diagnostico_virus_potato"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -847,14 +1007,240 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/diagnostico_potato"
+                    android:layout_below="@id/diagnostico_virus_potato"
                     android:layout_centerHorizontal="true"
                     android:text="@string/potato_leafroll_virus" />
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_virus_punta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/punta_morada"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_virus_punta"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/punta_morada" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/subtextView23"
+            style="@style/subLabelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Plagas" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_pests_gusano_blanco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/gusano_blanco"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_pests_gusano_blanco"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/gusano_blanco" />
+
+            </RelativeLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_pests_polilla_guatemalteca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/polilla_guatemalteca"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_pests_polilla_guatemalteca"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/polilla_guatemalteca" />
+
+            </RelativeLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_pests_nematodos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/nematodos_de_la_papa"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_pests_nematodos"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/nematodos_de_la_papa" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/subtextView24"
+            style="@style/subLabelForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Factores abióticos" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_abiotic_falta_agua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/falta_de_agua"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_abiotic_falta_agua"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/falta_de_agua" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_abiotic_exceso_agua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/exceso_de_agua"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_abiotic_exceso_agua"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/exceso_de_agua" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/diagnostico_abiotic_depredacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:accessibilityPaneTitle="@string/depredacion"
+                    android:onClick="onClickCheck" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diagnostico_abiotic_depredacion"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/depredacion" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -864,7 +1250,8 @@
                 android:id="@+id/diagnostico_insuficiencia_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Insufiencia de: " />
+                style="@style/subLabelForm"
+                android:text="Deficiencia nutricional Aprox. " />
 
             <EditText
                 android:id="@+id/diagnostico_insuficiencia"
@@ -882,10 +1269,69 @@
                 android:id="@+id/diagnostico_otro_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/other" />
+                style="@style/subLabelForm"
+                android:text="@string/other_diagnosys" />
 
             <EditText
                 android:id="@+id/diagnostico_otro"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/incidence_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/subLabelForm"
+                android:text="@string/incidence" />
+
+            <EditText
+                android:id="@+id/incidence"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/severity_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/subLabelForm"
+                android:text="@string/severity" />
+
+            <EditText
+                android:id="@+id/severity"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/insect_population_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/subLabelForm"
+                android:text="@string/insect_population" />
+
+            <EditText
+                android:id="@+id/insect_population"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -899,7 +1345,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Muestra_label" />
+            android:text="N° Muestra" />
 
         <EditText
             android:id="@+id/muestra"
@@ -924,6 +1370,25 @@
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/confirm_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/labelForm"
+                android:text="@string/all_data" />
+
+            <TextView
+                android:id="@+id/confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/labelFormResponse"
+                android:text="Estación, Síntomas, Diagnóstico, Fotos" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/save_observation"

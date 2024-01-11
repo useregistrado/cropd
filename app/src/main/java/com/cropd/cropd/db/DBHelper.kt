@@ -20,7 +20,7 @@ import java.util.Locale
 class DBHelper {
 
     val DB_NAME: String = "crops"
-    val DB_VERSION: String = "3"
+    val DB_VERSION: String = "08"
     val DB_FULL_NAME: String = DB_NAME + "_" + DB_VERSION + ".realm"
 
     fun initDatabase() {
@@ -29,8 +29,7 @@ class DBHelper {
                 Crop::class,
                 Sampling::class,
                 Observation::class
-            )
-        )
+            ))
             .name(DB_FULL_NAME)
             .build()
 
@@ -78,10 +77,22 @@ class DBHelper {
         newObservation.creationDate = date
         newObservation.leafColor.addAll(observation.leafColor)
         newObservation.symptoms.addAll(observation.symptoms)
-        newObservation.preliminaryDiagnosis.addAll(observation.preliminaryDiagnosis)
+
+        newObservation.preliminaryDiagnosisFungus.addAll(observation.preliminaryDiagnosisFungus)
+        newObservation.preliminaryDiagnosisBacteria.addAll(observation.preliminaryDiagnosisBacteria)
+        newObservation.preliminaryDiagnosisVirus.addAll(observation.preliminaryDiagnosisVirus)
+        newObservation.preliminaryDiagnosisPests.addAll(observation.preliminaryDiagnosisPests)
+        newObservation.preliminaryDiagnosisAbiotic.addAll(observation.preliminaryDiagnosisAbiotic)
+        newObservation.captures.addAll(observation.captures)
+
         newObservation.otherColorLeaf = observation.otherColorLeaf
         newObservation.otherSymptoms = observation.otherSymptoms
         newObservation.otherDiagnosis = observation.otherDiagnosis
+
+        newObservation.incidence = observation.incidence
+        newObservation.severity = observation.severity
+        newObservation.insectPopulation = observation.insectPopulation
+
         newObservation.sample = observation.sample
         newObservation.observations = observation.observations
         newObservation.modificationDate = date
@@ -118,16 +129,18 @@ class DBHelper {
         }
     }
 
-    suspend fun insertSampling(cropId: ObjectId, sampling: SamplingM?): Sampling? {
+    suspend fun insertSampling(cropId: ObjectId, samplingdto: SamplingM): Sampling? {
 
         val realm = getRealm()
         val sampling = Sampling()
         val date = getDate()
         sampling.creationDate = date
         sampling.lastModification = date
+        sampling.cropAge = samplingdto.ageCrop
+        sampling.observationCrop = samplingdto.observations
+
         var resp = false
         try {
-
             realm.write {
                 val crop = this.query<Crop>("_id == $0", cropId).first().find()
                 crop?.samplings?.add(sampling)
@@ -154,11 +167,23 @@ class DBHelper {
             seedtime = crop.seedtime
             landArea = crop.landArea
             areaUnits = crop.areaUnits
+            analysisSoil = crop.analysisSoil
             floorType = crop.floorType
+            topographyFloor = crop.topographyFloor
+            distanceForrows = crop.distanceForrows
+            distancePlants = crop.distancePlants
             species = crop.species
             variety = crop.variety
             seed = crop.seed
             previusCrop = crop.previusCrop
+            electricConductivity = crop.electricConductivity
+            ph = crop.ph
+            calcium = crop.calcium
+            nitrogen = crop.nitrogen
+            phosphorus = crop.phosphorus
+            potassium = crop.potassium
+            sodium = crop.sodium
+            satAluminum = crop.satAluminum
             lastModification = crop.lastModification
             creationDate = crop.creationDate
         }
@@ -270,11 +295,23 @@ class DBHelper {
             "2023-02-19",
             150.5,
             "Ha",
+            "No",
             "Arcilloso",
+            "Pendiente",
+            "50",
+            "23",
             "Papa",
             "Pastusa",
             "propia",
             "frijol",
+            "electricConductivity",
+            "ph",
+            "calcium",
+            "nitrogen",
+            "phosphorus",
+            "potassium",
+            "sodium",
+            "satAluminum",
             "2023-06-12",
             "2023-10-23"
         )
@@ -287,11 +324,23 @@ class DBHelper {
             "2023-02-19",
             150.5,
             "Ha",
+            "No",
             "Arcilloso",
+            "Pendiente",
+            "30",
+            "85",
             "Papa",
             "Pastusa",
             "propia",
             "frijol",
+            "electricConductivity",
+            "ph",
+            "calcium",
+            "nitrogen",
+            "phosphorus",
+            "potassium",
+            "sodium",
+            "satAluminum",
             "2023-06-12",
             "2023-10-23"
         )
@@ -304,11 +353,23 @@ class DBHelper {
             "2023-02-19",
             150.5,
             "Ha",
+            "No",
             "Arcilloso",
+            "Pendiente",
+            "52",
+            "82",
             "Papa",
             "Pastusa",
             "propia",
             "frijol",
+            "electricConductivity",
+            "ph",
+            "calcium",
+            "nitrogen",
+            "phosphorus",
+            "potassium",
+            "sodium",
+            "satAluminum",
             "2023-06-12",
             "2023-10-23"
         )
@@ -321,11 +382,23 @@ class DBHelper {
             "2023-02-19",
             150.5,
             "Ha",
+            "No",
             "Arcilloso",
+            "Pendiente",
+            "63",
+            "96",
             "Papa",
             "Pastusa",
             "propia",
             "frijol",
+            "electricConductivity",
+            "ph",
+            "calcium",
+            "nitrogen",
+            "phosphorus",
+            "potassium",
+            "sodium",
+            "satAluminum",
             "2023-06-12",
             "2023-10-23"
         )

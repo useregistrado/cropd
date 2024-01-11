@@ -1,6 +1,8 @@
 package com.cropd.cropd
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,9 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cropd.cropd.adapters.SamplingsAdapter
 import com.cropd.cropd.db.DBHelper
-import com.cropd.cropd.db.Sampling
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.mongodb.kbson.ObjectId
 
 
@@ -30,35 +29,19 @@ class SamplingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_samplings)
 
-        if (savedInstanceState == null) {
-            val extras = intent.extras
-            if (extras == null) {
-                id = ""
-                println("%%%%%%%%%%%%%111")
-            } else {
-                id = extras.getString("ID").toString()
-                println("%%%%%%%%%%%%%")
-            }
-        } else {
-            id = savedInstanceState.getSerializable("ID").toString()
-        }
+        id = getCrop()
+
         titleCrop = findViewById(R.id.titleCropSampling)
         seedDate = findViewById(R.id.seedDate)
         address = findViewById(R.id.address)
         creationDate = findViewById(R.id.creationDate)
         samplings = findViewById(R.id.samplingsCount)
         loadData()
-        loadSamplings()
     }
 
 
     fun loadData() {
         val db = DBHelper()
-        println(id)
-        println(id)
-        println(id)
-        println(id)
-        println("#########################")
         val crop = db.selectOneCrop(ObjectId(id))
 
         if (crop != null) {
@@ -78,25 +61,52 @@ class SamplingsActivity : AppCompatActivity() {
         val db = DBHelper()
         val samplings = db.selectSamplingsByCrop(ObjectId(id))
 
-        val adapter = SamplingsAdapter(samplings)
+        val adapter = SamplingsAdapter(samplings, gettSharedPreferences())
         recyclerSamplings.adapter = adapter
     }
 
     fun newSampling(view: View) {
-        var resp: Sampling? = null
-        val db = DBHelper()
-        runBlocking {
-            launch{
-                resp = db.insertSampling(ObjectId(id), null)
-            }
-        }
-        if (resp != null){
-            Toast.makeText(this, "Recorrido creado", Toast.LENGTH_LONG).show()
-            intent = Intent(this, ObservationsActivity::class.java)
-            intent.putExtra("ID", resp!!._id.toHexString())
-            startActivity(intent)
-        } else {
-            Toast.makeText(this, "No se pudo crear el recorrido", Toast.LENGTH_LONG).show()
-        }
+
+        intent = Intent(this, NewSamplingActivity::class.java)
+        startActivity(intent)
+
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+        Toast.makeText(this, "atras", Toast.LENGTH_LONG).show()
+    }
+
+    fun gettSharedPreferences(): SharedPreferences {
+        val sharedPreferences = getSharedPreferences("bread", Context.MODE_PRIVATE)
+        return sharedPreferences
+    }
+
+    fun setSampling(samplingId : String) {
+        val sharedPreferences = gettSharedPreferences()
+        val editor = sharedPreferences.edit()
+        editor.putString("sampling", samplingId)
+        editor.apply()
+    }
+
+    fun getCrop(): String {
+        val sharedPreferences = gettSharedPreferences()
+        return sharedPreferences.getString("crop", "") ?: ""
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
+        return true
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadSamplings() 
+    }
+
 }
