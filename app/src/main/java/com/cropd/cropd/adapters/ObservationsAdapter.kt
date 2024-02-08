@@ -47,15 +47,20 @@ class ObservationsAdapter(val observations: RealmList<Observation>, val context:
                 sintomas = "Ninguno"
             }
 
-            obs.symptoms.forEach{e -> sintomas = sintomas + e + ", "}
+            var leafColorD = ""
+            if(obs.leafColor.isEmpty()){
+                leafColorD = "No especificado"
+            }
 
+            obs.leafColor.forEach{e -> sintomas = sintomas + e + ", "}
+            obs.symptoms.forEach{e -> leafColorD = leafColorD + e + ", "}
 
             val weatherStationDataString = buildString {
 
                 append("Id:\t${obs._id.toHexString()}\n")
 
                 append("Altura planta:\t\t${obs.plantHeight}\n")
-                append("Color hojas:\t\t${obs.leafColor[0]}\n")
+                append("Color hojas:\t\t${leafColorD}\n")
                 append("Síntomas:\t\t${sintomas}\n")
                 append("Diagnóstico:\t\t${diagnostic}\n")
 
